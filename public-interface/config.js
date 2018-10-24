@@ -172,6 +172,15 @@ var config = {
                 prettyPrint: false,
                 timestamp: true,
                 exitOnError: false
+            },
+            file: {
+                filename: `./app.log`,
+                handleExceptions: true,
+                prettyPrint: true,
+                json: true,
+                maxsize: 52428800, // 5MB
+                maxFiles: 5,
+                colorize: true,
             }
         },
         "logLevel": "info", //Default verbosity,
@@ -209,10 +218,6 @@ if (process.env.NODE_ENV && (process.env.NODE_ENV.toLowerCase().indexOf("local")
     // config.logger.maxLines = 60000;
 
     config.controlChannel.ws.secure = false;
-}
-
-if (process.env.TEST && (process.env.TEST.toLowerCase().indexOf("1") !== -1)) {
-    config.postgres.database = config.postgres.database + "_test";
 }
 
 
